@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The base.html file contains the common structure for all web pages. 
+    The {% block content %} {% endblock %} section is where unique content for each page will go. -->
+    <h1>Base HTML Page - Common for all Pages</h1>
+    <h2>Welcome to my Website</h2>
+    <nav>
+        <a href="/">Home</a> | <a href="/about">About</a> 
+    </nav>
+
+      <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+    {% block body %}
+        <!-- Custom page content will go here (Home/About)-->
+    {% endblock %}
+
+
+</body>
+</html>

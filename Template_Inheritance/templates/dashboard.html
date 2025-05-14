@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+    .error { 
+        color: red;
+        font-size: 24px;
+        align-items: center;
+    }
+    .success { 
+        color: green;
+        font-size: 24px;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+    
+    {% extends 'base.html' %}
+
+    {% block title %}Dashboard{% endblock %}
+     <!-- Display Success/ Failure Message -->
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+     {% endwith %}
+    {% block body %}
+        <h2>Admin Dashboard</h2>
+    {% endblock %}
+
+</body>
+</html>

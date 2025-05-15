@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Test</title>
+</head>
+<body>
+    <h2>Flask App - Render Template</h2>
+    <!-- Passing the data in the template -->
+     <!-- check username before using it -->
+    {% if username %}
+        <h1>Hello. Welcome to Flask App, {{username}}</h1>
+    {% endif %}
+
+    <!-- control flow - displaying dynamic content based on roles in html template-->
+     <!-- conditional rendering check before displaying it  -->
+      {% if role %}
+        <h2>user role using flask</h2>
+        {% if role == 'admin' %}
+            <h2>Welcome Admin!</h2><br>
+        {% elif role == 'guest' %}
+            <h2>Welcome Guest!</h2><br>
+        {% elif role == 'staff' %}
+            <h2>Welcome Staff! </h2><br>
+        {% elif role == 'abinesh' %}
+            <h1>Welcome SuperAdmin {{username}}</h1><br>
+        {% else %}
+            <h3>Unknown User!</h3>
+        {% endif %}
+      {% endif %}  
+
+    <!-- Looping through items using for - to display list and contents dynamically -->
+     {% if hobbies %}
+        <h2>hobbies</h2>
+        <ol>
+            {% for hobby in hobbies%}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+        </ol>
+     {% endif %}   
+
+    <!-- loop through a dict -->
+     {% if details %}
+        <h2>User Profile</h2>
+        <ul>
+            {% for key, value in details.items() %}
+                <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+        </ul>
+     {% endif %}
+    
+
+</body>
+</html>

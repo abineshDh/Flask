@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Form</title>
+<style>
+    .danger{
+        color: red;
+    }
+    .success{
+        color:green;
+    }
+</style>
+</head>
+<body>
+    <h2>Protected Form (CSRF Token Required)</h2>
+    <hr>
+    <form action="/" method="POST">
+        <!-- this automatically iinclude CSRF token -->
+        {{ form.hidden_tag() }}
+        <label for="Name">Enter Name: </label>
+        <!-- Flask-WTF handles input -->
+        {{ form.name }}    
+        <!-- Submit button -->
+        {{ form.submit }}
+    </form>
+    <hr>
+    <h2>UnProtected Form (CSRF not required)</h2>
+    <form action="/form" method="POST">
+        <label for="Name">Enter Name: </label>
+        <input type="text" name="Name">
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- flash message -->
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+     {% endwith %}
+</body>
+</html>

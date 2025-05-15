@@ -1,0 +1,105 @@
+
+<!-- [GET] -->
+<!-- Get input and greet user  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h2>User Form</h2>
+   <form action="/index" method="get">
+      <label for="name">name:</label>
+      <input type="text" name="username" id="username" required>
+      <input type="submit" value="submit" id="submitBtn">
+   </form>
+</body>
+</html>
+
+<!-- Celcius to fahrenheit -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celcius to Fahrenheit</title>
+</head>
+<body>
+  <h2>Temperature Converter (Celsius to Fahrenheit)</h2>
+  <div>
+    <form action="/index" method="GET">
+      <label for="temp">Enter Temperature (in Celsius):</label>
+      <input type="text" name="temp" id="temp" required>
+      <input type="submit" value="Convert">
+    </form>
+  </div>
+</body>
+</html>
+
+<!-- Simple age calculator -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Simple Age Calculator</title>
+</head>
+<body>
+   <h2>Age Calculator</h2>
+   <form action="/index" method="GET">
+      <label for="name">Enter your Name: </label>
+      <input type="text" name="name" id="name" >
+      <label for="year">Enter your Birthyear: </label>
+      <input type="text" name="year" id="year" >
+      <input type="submit" value="Calculate" id="submitBtn">
+   </form>
+</body>
+</html>
+
+<!-- [POST] -->
+<!-- simple login form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Simple Login Form</title>
+</head>
+<body>
+   <h2>Login Form</h2>
+   <form action="/index" method="POST">
+      <label for="user">Enter Username:</label>
+      <input type="text" name="username" id="uname" required><br>
+      <br>
+      <label for="pass">Enter Password: </label>
+      <input type="text" name="password" id="pword">
+      <input type="submit" value="Submit">
+   </form>
+</body>
+</html>
+
+<!-- Contact Form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h2>Contact Form</h2>
+   <form action="/contact" method="POST">
+      <label for="name">FullName: </label>
+      <input type="text" name="FullName" id="fname" required>
+      <label for="email">Email Address: </label>
+      <input type="email" name="email" id="email">
+      <label for="message">Your Message: </label>
+      <textarea name="message" id="textarea" cols="30" rows="10">
+         Write your message:
+      </textarea>
+      <input type="submit" value="Submit">
+   </form>
+</body>
+</html>

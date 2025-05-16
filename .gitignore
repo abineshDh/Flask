@@ -1,0 +1,6 @@
+.__pycache__/
+.venv
+.vscode
+.Flask-Projects/venv
+venv
+.vscode

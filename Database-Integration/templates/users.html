@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    <h2>Users: </h2>
+    <ol>
+        {% for user in users%}
+        <li>{{ user.username }} - {{ user.email }}</li>
+            <a href="/delete/{{ user.id }}">Delete</a>
+        {% endfor %}
+    </ol>
+    <a href="/">Add More...</a>
+     <ol>
+        {% for user in users%}
+        <li>{{ user.username }} - {{ user.email }}</li>
+            <a href="/delete/{{ user.id }}">Delete</a>
+        {% endfor %}
+    </ol>
+    <a href="/">Add More...</a>
+</body>
+</html>

@@ -1,0 +1,74 @@
+from flask import Flask, request, redirect, render_template, flash
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'A9Ix7g9MZIDx2uJwDSa6fFCYSX5pUmwx'
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///testdb.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# Define User Table - Parent
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    username = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+    # One-to-Many Relationship : 
+    posts = db.relationship('Post', backref='author', lazy=True)
+
+    def __repr__(self):
+        return f"{self.username} : {self.email} : {self.password}"
+
+# Define Post Table - Child
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    title = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    # Foreign Key - links post.id = user.id
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+    def __repr__(self):
+        return f"{self.title} , {self.title}, {self.content}"
+
+def add_users():
+    user1 = User(username='Abineshkumar',
+                 email='abinesh@example.com',
+                 password='password123')
+    db.session.add_all(user1)
+    db.session.commit()
+
+def get_users():
+    user_1 = User.query.get(1)
+    user_2 = User.query.get(2)
+    all_users = User.query.all()
+    print(user_1, user_2, all_users)
+
+def filter_users():
+    matched_users = User.query.filter(User.username.like('Abinesh%')).all()
+    print(matched_users)
+
+def update_user():
+    user = User.query.get(1)
+    if user:
+        user.email = 'abineshspartan@example.com'
+        db.session.commit()
+
+def delete_user():
+    user = User.query.get(2)  # Use specific user
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+
+# Create DB
+with app.app_context():
+    db.create_all()
+    # You can uncomment these to test each:
+    # add_users()
+    # get_users()
+    # filter_users()
+    # update_user()
+    # delete_user()
+
+if __name__ == '__main__':
+    app.run(debug=True)

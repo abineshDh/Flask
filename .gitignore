@@ -4,3 +4,5 @@
 .Flask-Projects/venv
 venv
 .vscode
+./Flask-Projects
+.Database-Integration/__pycache__
